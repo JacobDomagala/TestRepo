@@ -1,6 +1,6 @@
 name: Static analysis
 
-on: [pull_request_target]
+on: [push, pull_request_target]
 
 jobs:
   static_analysis:
@@ -8,6 +8,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Checkout PR tree
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ github.event.pull_request.repository.full_name }}
+        ref: ${{ github.event.pull_request.sha }}
+        path: pr_tree
 
     - name: Run static analysis
       uses: JacobDomagala/StaticAnalysis@make-it-work-on-fork
