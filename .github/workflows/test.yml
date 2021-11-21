@@ -12,6 +12,6 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run static analysis
-      uses: JacobDomagala/StaticAnalysis@master
+      uses: JacobDomagala/StaticAnalysis@make-it-work-on-fork
       with:
         verbose: true
