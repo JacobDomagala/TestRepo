@@ -12,8 +12,8 @@ jobs:
     - name: Checkout PR tree
       uses: actions/checkout@v2
       with:
-        repository: ${{ github.event.pull_request.repository.full_name }}
-        ref: ${{ github.event.pull_request.sha }}
+        ref: ${{github.event.pull_request.head.ref}}
+        repository: ${{github.event.pull_request.head.repo.full_name}}
         path: pr_tree
 
     - name: Run static analysis
