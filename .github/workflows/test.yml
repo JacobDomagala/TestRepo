@@ -24,3 +24,4 @@ jobs:
         verbose: true
         exclude_dir: lib
         cmake_args: -DCMAKE_BUILD_TYPE=Debug
+        clang_tidy_args: -checks='*,fuchsia-*,google-*,zircon-*,abseil-*,modernize-use-trailing-return-type,llvm*,hicpp-uppercase-literal-suffix,readability-uppercase-literal-suffix'
