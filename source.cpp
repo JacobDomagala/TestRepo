@@ -6,6 +6,6 @@ void some_func(){
 
 int main(){
     float float_val = 20.0;
-
+    int k;
     return "some_string";
 }
