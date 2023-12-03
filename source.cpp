@@ -38,5 +38,7 @@ int main() {
     std::vector<int> vec;
     std::cout << vec[10] << std::endl;  // Out of bounds vector access
 
+    std::vector<int> unusedvec;
+
     return 0;
 }
