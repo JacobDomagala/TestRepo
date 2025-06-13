@@ -24,7 +24,7 @@ jobs:
 
     - name: Post PR comment for warnings/errors
       if: always()
-      uses: JacobDomagala/CompileResult@master
+      uses: JacobDomagala/CompileResult@31-warnings-with-relative-paths-not-parsed
       with:
         comment_title: COMPILE RESULT (${{ matrix.os }})
         debug_output: true
