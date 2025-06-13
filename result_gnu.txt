@@ -1,0 +1,41 @@
+src/another.cpp: In function ‘void foo(int)’:
+src/another.cpp:4:9: warning: unused variable ‘unused’ [-Wunused-variable]
+    4 |     int unused;
+      |         ^~~~~~
+src/another.cpp:5:9: warning: suggest parentheses around assignment used as truth value [-Wparentheses]
+    5 |     if (x = 0) {
+      |         ^
+
+src/another.cpp: In function ‘int main()’:
+src/another.cpp:11:23: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   11 |     for (int i = 10; i >= 0; --i) {
+      |                       ~~^~~
+src/another.cpp:13:12: warning: overflow in conversion from ‘int’ to ‘char’ changes value from ‘300’ to ‘44’ [-Woverflow]
+   13 |     char c = 300;
+      |            ^
+
+src/another.cpp:14:9: warning: conversion from ‘char’ to ‘int’ may change value [-Wconversion]
+   14 |     foo(c);
+      |         ^
+/home/runner/work/TestRepo/TestRepo/source.cpp: In function ‘void some_func()’:
+/home/runner/work/TestRepo/TestRepo/source.cpp:4:9: warning: unused variable ‘unused_var’ [-Wunused-variable]
+    4 |     int unused_var = 10;
+      |         ^~~~~~~~~~
+/home/runner/work/TestRepo/TestRepo/source.cpp: In function ‘int main()’:
+/home/runner/work/TestRepo/TestRepo/source.cpp:10:12: error: invalid conversion from ‘const char*’ to ‘int’ [-fpermissive]
+   10 |     return "some_string";
+      |            ^~~~~~~~~~~~~
+      |            |
+      |            const char*
+/home/runner/work/TestRepo/TestRepo/source.cpp:8:11: warning: unused variable ‘float_val’ [-Wunused-variable]
+    8 |     float float_val = 20.0;
+      |           ^~~~~~~~~
+/home/runner/work/TestRepo/TestRepo/source.cpp:9:9: warning: unused variable ‘k’ [-Wunused-variable]
+    9 |     int k;
+      |         ^
+invalid_source.cpp:8:11: warning: unused variable ‘float_val’ [-Wunused-variable]
+    8 |     float float_val = 20.0;
+      |           ^~~~~~~~~
+invalid_source.cpp:9:9: warning: unused variable ‘k’ [-Wunused-variable]
+    9 |     int k;
+      |         ^
