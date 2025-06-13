@@ -20,7 +20,7 @@ jobs:
       shell: bash
       run: |
         cmake $GITHUB_WORKSPACE
-        cmake --build . 2> >(tee "output.txt")
+        cmake --build . 2>&1 | tee "output.txt"
 
     - name: Post PR comment for warnings/errors
       if: always()

@@ -1,13 +1,13 @@
-src\another.cpp(4): warning C4101: 'unused': unreferenced local variable
-src\another.cpp(5): warning C4552: '=': operator has no effect; did you intend to compare?
-src\another.cpp(11): warning C4018: '>=': signed/unsigned mismatch
-src\another.cpp(13): warning C4309: 'initializing': truncation of constant value
-src\another.cpp(14): warning C4244: 'argument': conversion from 'char' to 'int', possible loss of data
+src\another.cpp(5): warning C4101: 'unused': unreferenced local variable
+src\another.cpp(6): warning C4552: '=': operator has no effect; did you intend to compare?
+src\another.cpp(13): warning C4018: '>=': signed/unsigned mismatch
+src\another.cpp(16): warning C4309: 'initializing': truncation of constant value
+src\another.cpp(17): warning C4244: 'argument': conversion from 'char' to 'int', possible loss of data
 
-C:\a_work\TestRepo\TestRepo\source.cpp(4): warning C4101: 'unused_var': unreferenced local variable
-C:\a_work\TestRepo\TestRepo\source.cpp(8): warning C4101: 'float_val': unreferenced local variable
-C:\a_work\TestRepo\TestRepo\source.cpp(9): warning C4101: 'k': unreferenced local variable
-C:\a_work\TestRepo\TestRepo\source.cpp(10): error C2440: 'return': cannot convert from 'const char *' to 'int'
+C:\a\TestRepo\TestRepo\source.cpp(4): warning C4101: 'unused_var': unreferenced local variable
+C:\a\TestRepo\TestRepo\source.cpp(8): warning C4101: 'float_val': unreferenced local variable
+C:\a\TestRepo\TestRepo\source.cpp(9): warning C4101: 'k': unreferenced local variable
+C:\a\TestRepo\TestRepo\source.cpp(10): error C2440: 'return': cannot convert from 'const char *' to 'int'
 
 invalid_source.cpp(8): warning C4101: 'float_val': unreferenced local variable
 invalid_source.cpp(9): warning C4101: 'k': unreferenced local variable
