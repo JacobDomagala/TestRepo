@@ -1,0 +1,57 @@
+name: Generate Badge
+on:
+  pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image: [alpine, ubuntu]
+
+    steps:
+      - id: docker-build
+        run: |
+          if [ "${{ matrix.image }}" = "alpine" ]; then
+            echo "result=success" >> "$GITHUB_OUTPUT"
+          else
+            echo "result=failure" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Record matrix data
+        run: |
+          echo "${{ matrix.image }}" > target.txt
+          echo "${{ steps.docker-build.outputs.result }}" > outcome.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.image }}
+          path: |
+            target.txt
+            outcome.txt
+
+  collect:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: result-*
+          path: results
+
+      - id: gather
+        run: |
+          names=$(find results -name target.txt  -exec cat {} +)
+          results=$(find results -name outcome.txt -exec cat {} +)
+          echo "names<<EOF"   >> "$GITHUB_OUTPUT"
+          echo "$names"       >> "$GITHUB_OUTPUT"
+          echo "EOF"          >> "$GITHUB_OUTPUT"
+          echo "results<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$results"     >> "$GITHUB_OUTPUT"
+          echo "EOF"          >> "$GITHUB_OUTPUT"
+
+      - name: Generate build badge
+        uses: DARMA-tasking/badge-generator@1-initial-version
+        with:
+          names: ${{ steps.gather.outputs.names }}
+          results: ${{ steps.gather.outputs.results }}
+          github_token: ${{ secrets.BADGES }}
