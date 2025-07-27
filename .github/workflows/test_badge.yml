@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: build-${{ matrix.image }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
