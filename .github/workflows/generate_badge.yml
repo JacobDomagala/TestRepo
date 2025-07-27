@@ -2,6 +2,7 @@ name: Generate badge
 on:
   workflow_run:
     workflows: ["Run build"]
+    branches: ["main"]
     types: [completed]
 
 jobs:
