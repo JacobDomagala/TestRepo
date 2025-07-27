@@ -1,0 +1,42 @@
+name: Generate Badge
+on:
+  workflow_run:
+    workflows: ["Run build"]   # name of the upstream workflow
+    # branches:   [develop]         # branch filter (optional)
+    types:      [completed]       # fire when upstream workflow is done
+
+jobs:
+  badge:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}   # optional gate
+    runs-on: ubuntu-latest
+    steps:
+        - name: Get latest develop build run‑id
+          id: latest
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            id=$(gh api /repos/${{ github.repository }}/actions/workflows/build.yml/runs \
+                 -f branch=develop -F status=completed -q '.workflow_runs[0].id')
+            echo "run_id=$id" >>"$GITHUB_OUTPUT"
+
+        - name: Extract job names and conclusions
+          id: extract
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            j=$(gh api /repos/${{ github.repository }}/actions/runs/${{ steps.latest.outputs.run_id }}/jobs)
+            n=$(echo "$j" | jq -r '.jobs[].name' | paste -sd '\n' -)
+            r=$(echo "$j" | jq -r '.jobs[].conclusion' | paste -sd '\n' -)
+            echo "names<<EOF"   >>"$GITHUB_OUTPUT"
+            echo "$n"           >>"$GITHUB_OUTPUT"
+            echo "EOF"          >>"$GITHUB_OUTPUT"
+            echo "results<<EOF" >>"$GITHUB_OUTPUT"
+            echo "$r"           >>"$GITHUB_OUTPUT"
+            echo "EOF"          >>"$GITHUB_OUTPUT"
+
+        - name: Generate build badge
+          uses: DARMA-tasking/badge-generator@1-initial-version
+          with:
+            names:   ${{ steps.extract.outputs.names }}
+            results: ${{ steps.extract.outputs.results }}
+            github_token: ${{ secrets.BADGES }}
