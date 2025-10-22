@@ -89,6 +89,7 @@ jobs:
         use_cmake: false
         exclude_dir: lib
         compile_commands: build_tmp/compile_commands.json
+        compile_commands_replace_prefix: true
         init_script: init_script.sh
         cmake_args: -DCMAKE_BUILD_TYPE=Debug
         clang_tidy_args: |
