@@ -68,7 +68,7 @@ jobs:
 
     - name: Run static analysis (CMake)
       if: ${{ always() }}
-      uses: JacobDomagala/StaticAnalysis@master
+      uses: JacobDomagala/StaticAnalysis@138-fix-usage-of-python_dirs
       with:
         comment_title: "SA CMake output"
         verbose: true
@@ -82,7 +82,7 @@ jobs:
 
     - name: Run static analysis (non CMake)
       if: ${{ always() }}
-      uses: JacobDomagala/StaticAnalysis@master
+      uses: JacobDomagala/StaticAnalysis@138-fix-usage-of-python_dirs
       with:
         comment_title: "SA non-CMake output"
         verbose: true
