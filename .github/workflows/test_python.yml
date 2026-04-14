@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Run static analysis Python
-      uses: JacobDomagala/StaticAnalysis@master
+      uses: JacobDomagala/StaticAnalysis@69-improve-the-output-from-tests
       with:
         comment_title: "Python"
         verbose: true
