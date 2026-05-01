@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Run static analysis Python
-      uses: JacobDomagala/StaticAnalysis@150-investigate-ci-errors-on-master
+      uses: JacobDomagala/StaticAnalysis@master
       with:
         comment_title: "Python"
         verbose: true
